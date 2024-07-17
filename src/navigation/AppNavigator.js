@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { Main, MyPage, GameList, PointHistory } from '../Pages/index';
+import { Main, MyPage, GameList, PointHistory, Game } from '../Pages/index';
 import TabNavigator from './TabNavigator';
 
 const Stack = createStackNavigator();
@@ -23,10 +23,10 @@ const AppNavigator = () => {
           name="포인트 내역" 
           component={PointHistory}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="게임" 
           component={Game}
-        /> */}
+        />
       </Stack.Navigator>
     );
   };

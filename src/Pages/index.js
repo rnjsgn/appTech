@@ -6,4 +6,4 @@ export { default as MyPage } from './MyPage';
 export { default as GameList } from './GameList';
 export { default as Shop } from './Shop';
 export { default as PointHistory } from './PointHistory';
-// export { default as Game } from './Game';
+export { default as Game } from './Game';
