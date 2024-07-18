@@ -6,15 +6,21 @@ buildscript {
         targetSdkVersion = 34
         ndkVersion = "26.1.10909125"
         kotlinVersion = "1.9.22"
+
+        // google login 이용시 필요한 코드
+        googlePlayServicesAuthVersion = "19.2.0"
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        // google 이용시 4.2.1로 변경
+        classpath("com.android.tools.build:gradle:4.2.1")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        // google login 이용시 필요한 코드
+        classpath 'com.google.gms:google-services:4.3.10'
     }
 }
 

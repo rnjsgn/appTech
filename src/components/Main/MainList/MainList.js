@@ -7,6 +7,7 @@ import { Profile } from "../../Common/Profile/Profile";
 import { ButtonList } from "../ButtonList/ButtonList";
 import { RecentGameList } from "../RecentGameList/RecentGameList";
 import { WinList } from "../WinList/WinList";
+import { Login } from "../../Common/Login/Login";
 
 export const MainList = ({
     navigation
@@ -20,7 +21,8 @@ export const MainList = ({
                 source={require('../../../assets/images/Title.png')}
                 resizeMode="contain"
             />
-            <Profile />
+            <Login />
+            {/* <Profile /> */}
             <ButtonList
                 navigation = {navigation}
             />
