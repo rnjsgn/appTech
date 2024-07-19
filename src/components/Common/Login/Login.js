@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Alert } from "react-native";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { firebase_auth } from "../../../../firebaseConfig";
+import { firebase_auth, firebase_db } from "../../../../firebaseConfig";
+import firebase from "firebase/compat/app";
 
 import { Button } from "../Button/Button";
 
@@ -14,9 +15,22 @@ export const Login = () => {
     const onGoogleButtonPress = async () => {
         try {
             await GoogleSignin.hasPlayServices();
-            const { idToken } = await GoogleSignin.signIn();
-            const googleCredential = firebase.auth.GoogleAuthProvider.credential(idToken); // 수정
-            await firebase_auth.signInWithCredential(googleCredential);
+            const userInfo = await GoogleSignin.signIn();
+            console.log('Google userInfo:', userInfo);
+
+            const { idToken } = userInfo;
+            const googleCredential = firebase.auth.GoogleAuthProvider.credential(idToken);
+            const userCredential = await firebase_auth.signInWithCredential(googleCredential);
+            console.log('Firebase userCredential:', userCredential);
+
+            // 사용자 정보를 데이터베이스에 저장
+            const { uid, email } = userCredential.user;
+            const name = userInfo.user.name;
+            await firebase_db.ref(`users/${uid}`).set({
+                name,
+                email,
+            });
+
             Alert.alert('Success', 'Signed in with Google!', [
                 { text: 'OK', onPress: () => console.log('OK Pressed') }
             ]);

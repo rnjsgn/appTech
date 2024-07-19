@@ -6,7 +6,7 @@ const GamePresenter = () => {
   return (
     <View style={styles.container}>
       <WebView
-        source={{ uri: 'file:///android_asset/unity/index.html' }}
+        source={{ uri: 'https://bubble-shooter-web.vercel.app/' }}
         // 로컬 서버 URL
         style={styles.webview}
       />
